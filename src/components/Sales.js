@@ -14,13 +14,13 @@ class Sales extends React.Component{
         const requestOptions = {
             method: 'GET', headers: { 'Content-Type': 'application/json'}
         };
-        fetch(config.apiURL+"clients/"+config.operatorId, requestOptions).then((response) => {
+        fetch(config.apiUrl+"clients/"+config.operatorId, requestOptions).then((response) => {
             return response.json();
         }).then((result) => {
             this.setState({ clientList: result.data.map((client) => { return client; }) });
         });
 
-        fetch(config.apiURL+"products/"+config.operatorId, requestOptions).then((response) => {
+        fetch(config.apiUrl+"products/"+config.operatorId, requestOptions).then((response) => {
             return response.json();
         }).then((result) => {
             this.setState({ productList: result.data.map((product) => { return product; }) });
