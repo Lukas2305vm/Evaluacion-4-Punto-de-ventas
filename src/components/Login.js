@@ -4,7 +4,7 @@ import useAuth from '../helpers/useAuth';
 import config from '../helpers/config.json';
 
 const Login = () => {
-    const { setAuth } = useAuth();
+    const {setAuth} = useAuth();
     let navigate = useNavigate();
 
     const changeButtonState = (button, enable) => {
@@ -27,10 +27,9 @@ const Login = () => {
         reasonBox.innerHTML = "";
         messageBox.classList.add('d-none');
       }
-
     }
 
-    const logger = async(event) => {
+    const Logger = async(event) => {
       event.preventDefault();
       const button = document.querySelector("button");
       changeButtonState(button, false);
@@ -48,7 +47,7 @@ const Login = () => {
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({nickname: user, password: password, operatorId: config.operatorId})
       }
-      fetch(config.apiURL+"login", requestOptions).then((response) => {
+      fetch(config.apiUrl+'Login', requestOptions).then((response) => {
         switch(response.status){
           case 400:
             showMessage(true, "Consulta mal formada");
@@ -79,7 +78,7 @@ const Login = () => {
           changeButtonState(button, false);
           localStorage.setItem("user", infoUser);
           const roles = [infoData['level']];
-          setAuth({user, password, roles})
+          //setAuth({ user, password, roles })
           navigate("/sales");
         } catch (error) {
           console.log(error);
@@ -97,7 +96,7 @@ const Login = () => {
       <div className="card-body login-card-body">
         <p className="login-box-msg">Ingrese sus credenciales para acceder</p>
   
-        <form onSubmit={logger}>
+        <form onSubmit={Logger}>
           <div className="input-group mb-3">
             <input type="text" name="username" id="username" className="form-control" placeholder="Usuario" />
             <div className="input-group-append">
@@ -130,6 +129,5 @@ const Login = () => {
     </div>
   </div>
  </div>);
-};
-
+}
 export default Login;
