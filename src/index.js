@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import  App  from "./App";
 
-const apiUrl= ""
+const API_URL= ""
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
